@@ -36,3 +36,6 @@ const seedDatabase = async () => {
 };
 
 seedDatabase();
+
+// We are not exporting this file and only running it once to populate the database.
+// Ignore proper error handling
