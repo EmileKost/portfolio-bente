@@ -1,5 +1,12 @@
 import { ReactNode } from "react";
 
+import { TheHeader } from "@/components/TheHeader";
+
 export default function AppLayout({ children }: { children: ReactNode }) {
-	return <div>{children}</div>;
+	return (
+		<>
+			<TheHeader />
+			{children}
+		</>
+	);
 }

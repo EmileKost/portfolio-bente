@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Button } from "./Button";
+import Menu from "./Menu";
 
 export const TheHeader = () => {
 	return (
@@ -9,13 +9,7 @@ export const TheHeader = () => {
 				className="text-base md:text-lg uppercase">
 				Bente Roelofsen
 			</Link>
-			<Button
-				as="button"
-				variant="primary"
-				className="text-base md:text-lg uppercase"
-				onClick={() => console.log("HIHIH")}>
-				Menu
-			</Button>
+			<Menu />
 		</header>
 	);
 };
