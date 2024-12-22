@@ -2,6 +2,7 @@ import { ComponentProps, ElementType, ReactNode } from "react";
 
 import { twMerge } from "tailwind-merge";
 
+// TODO: How to render as=a as <Link> from Next
 type ButtonBaseProps = {
 	variant: "primary" | "link";
 	className?: string;
