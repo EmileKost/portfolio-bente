@@ -2,7 +2,6 @@ import { ComponentProps, ElementType, ReactNode } from "react";
 
 import { twMerge } from "tailwind-merge";
 
-// TODO: How to render as=a as <Link> from Next
 type ButtonBaseProps = {
 	variant: "primary" | "link";
 	className?: string;
@@ -21,12 +20,12 @@ export function Button<E extends ElementType = "button">({
 	...props
 }: ButtonProps<E>) {
 	const Component = as || "button";
-	console.log(variant);
+	const styles = variant;
 
 	return (
 		<Component
 			{...props}
-			className={twMerge("", className)}>
+			className={twMerge(styles, className)}>
 			{children}
 		</Component>
 	);
