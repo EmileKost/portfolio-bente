@@ -10,6 +10,8 @@ export default function RootLayout({
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
+	// PP neue Montreal
+	// Dx Grafix
 	return (
 		<html lang="en">
 			<body className="w-full min-h-full bg-white-primary">{children}</body>
