@@ -1,12 +1,20 @@
-import { Button } from "./Button";
+import { Button } from "../Button";
+import { FooterLogo } from "./FooterLogo";
 
 import { footerContent } from "@/constants/footer";
 
 export const TheFooter = () => {
 	return (
-		<footer className="w-full px-3 md:px-8 flex flex-col pt-6 pb-2">
+		<footer className="w-full px-3 md:px-8 flex flex-col gap-[250px] md:gap-12 pb-24 md:pb-8">
 			<div className="w-full flex justify-center items-center shrink-0">
-				<h2>{footerContent.title}</h2>
+				<Button
+					as="a"
+					variant="link"
+					href="mailto:emilekost00@gmail.com"
+					className="w-full h-auto">
+					<span className="sr-only">{footerContent.title}</span>
+					<FooterLogo />
+				</Button>
 			</div>
 			<div className="flex justify-between items-start">
 				<p className="hidden md:block w-full md:max-w-[350px]">
@@ -23,7 +31,7 @@ export const TheFooter = () => {
 					</Button>
 					<p className="uppercase">{footerContent.tradeMark}</p>
 				</div>
-				<div>
+				<div className="w-full md:max-w-[200px] text-end">
 					{/* TODO: svg here!! */}
 					<p>{footerContent.birds}</p>
 				</div>
