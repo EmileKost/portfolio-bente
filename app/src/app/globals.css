@@ -5,3 +5,13 @@
 * {
 	color: #2a2a2a;
 }
+
+.test {
+	text-align: justify;
+}
+
+.test:after {
+	content: "";
+	display: inline-block;
+	width: 100%;
+}
