@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 
-// TODO: Fix initial 0
 export function useBreakpointValue() {
 	const [size, setSize] = useState<{ x: number; y: number }>({
 		x: window.innerWidth,
@@ -9,9 +8,6 @@ export function useBreakpointValue() {
 
 	useEffect(() => {
 		const handleResize = () => {
-			console.log(window.innerWidth);
-			console.log(innerHeight);
-
 			setSize({
 				x: window.innerWidth,
 				y: window.innerHeight,

@@ -6,7 +6,8 @@ import { removeVowels } from "@/utils/removeVowels";
 import { WINDOW_SIZES } from "@/constants/windowSizes";
 import { twMerge } from "tailwind-merge";
 
-// TODO: Think of better way of setting font to full width
+// TODO: Think of better way of setting font to full width, might be better to convert to SVG
+// - Animate pixalated
 export default function HomeTitle({ title }: { title: string }) {
 	const { width } = useBreakpointValue();
 
