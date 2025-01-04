@@ -29,7 +29,7 @@ export const TheFooter = () => {
 						className="uppercase">
 						{footerContent.linkedin.title}
 					</Button>
-					<p className="uppercase">{footerContent.tradeMark}</p>
+					<p className="uppercase">&#169;{footerContent.tradeMark}</p>
 				</div>
 				<div className="w-full md:max-w-[200px] text-end">
 					{/* TODO: svg here!! */}
