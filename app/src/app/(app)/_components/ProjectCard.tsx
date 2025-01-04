@@ -25,7 +25,7 @@ export const ProjectCard = ({
 			)}>
 			<div className="w-full h-full">
 				<Image
-					src={"/images/project-1.png"}
+					src={image}
 					alt={title}
 					height={900}
 					width={700}

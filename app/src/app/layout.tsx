@@ -12,6 +12,7 @@ export default function RootLayout({
 }>) {
 	// PP neue Montreal
 	// Dx Grafix
+	// TODO: Think of large monitors what to do then
 	return (
 		<html lang="en">
 			<body className="w-full min-h-full bg-white-primary">{children}</body>
