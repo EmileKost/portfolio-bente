@@ -30,11 +30,11 @@ export const ProjectCard = ({
 				/>
 				{/* TODO: Handle video */}
 			</div>
-			<div className="absolute bottom-0 left-0 w-full px-2 pb-1 flex justify-between">
+			<div className="absolute bottom-0 left-0 w-full px-2 pb-1 flex justify-between text-base text-white-primary">
 				<span>
 					{index}/{length}
 				</span>
-				<div className="flex gap-2">
+				<div className="flex gap-2 uppercase">
 					<h3>{title}</h3>
 					<span>{projectType}</span>
 				</div>
