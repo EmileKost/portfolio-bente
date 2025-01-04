@@ -1,3 +1,3 @@
-export const WINDOW_SIZES = {
+export const SCREEN_SIZES = {
 	MD: 768,
 };

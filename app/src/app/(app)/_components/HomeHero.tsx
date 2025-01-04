@@ -1,4 +1,5 @@
 import TitleTextBlock from "@/components/TitleTextBlock";
+import { Logo } from "./Logo";
 
 import { homeHeroContent } from "@/constants/homeHero";
 
@@ -12,6 +13,7 @@ export default function HomeHero() {
 					size="small"
 					className="uppercase"
 				/>
+				<Logo text="Roelofsen" />
 			</div>
 		</div>
 	);
