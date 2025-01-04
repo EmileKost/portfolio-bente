@@ -6,7 +6,7 @@ export const Logo = ({ text }: { text: string }) => {
 	const logoContent = useFullTextContent(text);
 
 	return (
-		<h1 className="uppercase font-bold flex justify-between text-[30vw] md:text-[16vw] w-full">
+		<h1 className="uppercase font-bold flex justify-between text-[30vw] md:text-[16vw] w-full text-black-primary">
 			{logoContent.map((item, idx) => (
 				<span key={`${item}${idx}`}>{item}</span>
 			))}

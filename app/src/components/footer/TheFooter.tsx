@@ -5,7 +5,7 @@ import { FooterButton } from "../FooterButton";
 
 export const TheFooter = () => {
 	return (
-		<footer className="w-full px-3 md:px-8 flex flex-col gap-[250px] md:gap-12 pb-24 md:pb-8">
+		<footer className="w-full px-3 md:px-8 flex flex-col gap-[250px] md:gap-12 pb-24 md:pb-8 text-black-primary">
 			<div className="w-full flex justify-center items-center shrink-0">
 				<FooterButton
 					title={footerContent.title}

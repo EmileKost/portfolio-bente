@@ -1,11 +1,14 @@
 "use client";
 
-import type { ProjectCard as ProjectCardType } from "@/types/project";
-
 import { ProjectCard } from "./ProjectCard";
 
 type ProjectSliderProps = {
-	projects: Array<ProjectCardType>;
+	projects: Array<{
+		title: string;
+		projectType: string;
+		image: string;
+		video?: string;
+	}>;
 };
 
 export const ProjectSlider = ({ projects }: ProjectSliderProps) => {
@@ -15,9 +18,8 @@ export const ProjectSlider = ({ projects }: ProjectSliderProps) => {
 				projects.length > 0 &&
 				projects.map((project, idx) => (
 					<ProjectCard
-						key={project.title}
+						key={`${project.title}${idx}`}
 						title={project.title}
-						text={project.text}
 						projectType={project.projectType}
 						image={project.image}
 						index={idx}

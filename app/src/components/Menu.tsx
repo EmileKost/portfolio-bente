@@ -12,7 +12,7 @@ export default function Menu() {
 			<Button
 				as="button"
 				variant="primary"
-				className="text-base md:text-lg uppercase"
+				className="text-base text-black-primary md:text-lg uppercase"
 				onClick={() => setOpen(true)}>
 				Menu
 			</Button>

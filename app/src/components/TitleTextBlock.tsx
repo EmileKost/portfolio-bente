@@ -17,7 +17,7 @@ export default function TitleTextBlock({
 		<div
 			className={twMerge(
 				// TODO: Find better library that lets us apply dynamic style other then ternary
-				"flex flex-col md:flex-row gap-4 w-full",
+				"flex flex-col md:flex-row gap-4 w-full text-black-primary",
 				size === "small" ? "md:max-w-[700px]" : "",
 				size === "medium" ? "md:max-w-[80%]" : "",
 				size === "wide" ? "md:max-w-full md:justify-between" : ""

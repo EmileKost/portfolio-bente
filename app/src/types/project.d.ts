@@ -10,7 +10,10 @@ export type Project = {
 	text: Array<string>;
 };
 
-export type ProjectCard = Omit<Project, "discipline" | "media" | "date"> & {
+export type ProjectCard = Omit<
+	Project,
+	"discipline" | "media" | "date" | "text"
+> & {
 	index: number;
 	length: number;
 	className?: string;

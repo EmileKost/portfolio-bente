@@ -19,24 +19,37 @@ export const ProjectCard = ({
 
 	return (
 		<div
-			className={twMerge("h-full w-full md:max-w-[700px] relative", className)}>
+			className={twMerge(
+				"aspect-[3/4] w-full h-auto md:max-w-[700px] relative",
+				className
+			)}>
 			<div className="w-full h-full">
 				<Image
-					src={image}
+					src={"/images/project-1.png"}
 					alt={title}
 					height={900}
 					width={700}
-					className={twMerge("object-cover h-full w-full")}
+					className={twMerge(
+						"object-cover h-full w-full",
+						video && "absolute top-0 bottom-0",
+						isPlaying ? "opacity-0" : "opacity-100"
+					)}
 				/>
-				{/* TODO: Handle video */}
+				{video && (
+					<video
+						src={video}
+						autoPlay={isPlaying}
+						muted
+						className="w-full h-full object-cover absolute top-0 left-0"></video>
+				)}
 			</div>
-			<div className="absolute bottom-0 left-0 w-full px-2 pb-1 flex justify-between text-base text-white-primary">
+			<div className="z-20 absolute bottom-0 left-0 w-full px-2 pb-1 flex justify-between text-base text-white-primary">
 				<span>
-					{index}/{length}
+					{index + 1}/{length + 1}
 				</span>
-				<div className="flex gap-2 uppercase">
+				<div className="flex gap-3 uppercase !text-white-primary">
 					<h3>{title}</h3>
-					<span>{projectType}</span>
+					<span className="opacity-80">{projectType}</span>
 				</div>
 			</div>
 		</div>
