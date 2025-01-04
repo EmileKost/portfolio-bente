@@ -24,15 +24,15 @@ export const ProjectCard = forwardRef(function ProjectCard(
 	return (
 		<Link
 			ref={ref}
-			href={`/projects/${url}`}>
+			href={`/projects/${url}`}
+			className={twMerge("aspect-[3/4] relative cursor-none", className)}>
 			<div
 				ref={containerRef}
 				onMouseMove={(e) => {
 					handleMousePosition(e, containerRef, setPosition);
 					setIsHovering(true);
 				}}
-				onMouseLeave={() => setIsHovering(false)}
-				className={twMerge("aspect-[3/4] relative cursor-none", className)}>
+				onMouseLeave={() => setIsHovering(false)}>
 				<Media
 					image={image}
 					video={video}
