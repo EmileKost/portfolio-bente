@@ -38,8 +38,10 @@ export const ProjectCard = ({
 	return (
 		<div
 			ref={containerRef}
-			onMouseMove={(e) => handleMousePosition(e)}
-			onMouseEnter={() => setIsHovering(true)}
+			onMouseMove={(e) => {
+				handleMousePosition(e);
+				setIsHovering(true);
+			}}
 			onMouseLeave={() => setIsHovering(false)}
 			className={twMerge(
 				"aspect-[3/4] shrink-0 w-full h-auto md:max-w-[550px] relative",
@@ -62,7 +64,7 @@ export const ProjectCard = ({
 			</div>
 			<Cursor
 				isHovering={isHovering}
-				className="rounded-full px-6 py-1 bg-black-dark text-white-primary text-xs uppercase font-light"
+				className="bg-black-dark text-white-primary"
 				content="View"
 				position={position}
 			/>

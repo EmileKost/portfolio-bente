@@ -5,7 +5,7 @@ import { twMerge } from "tailwind-merge";
 const animation = {
 	hidden: {
 		opacity: 0,
-		scale: 0.7,
+		scale: 0.3,
 	},
 	visible: {
 		opacity: 1,
@@ -44,7 +44,10 @@ export const Cursor = ({
 						left: position.x,
 						top: position.y,
 					}}
-					className={twMerge("absolute top-0 left-0", className)}>
+					className={twMerge(
+						"absolute text-xs uppercase font-light p-3 aspect-square rounded-full flex justify-center items-center",
+						className
+					)}>
 					{content}
 				</motion.div>
 			)}
