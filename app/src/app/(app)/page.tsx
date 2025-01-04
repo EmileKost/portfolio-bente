@@ -38,7 +38,7 @@ export default function HomePage() {
 	return (
 		<>
 			<HomeHero />
-			<div className="py-4 md:py-52">
+			<div className="h-screen flex justify-center">
 				<ProjectSlider projects={projects} />
 			</div>
 		</>

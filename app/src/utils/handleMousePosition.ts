@@ -1,8 +1,8 @@
 import type { Dispatch, RefObject, SetStateAction } from "react";
 
 export const handleMousePosition = (
-	e: React.MouseEvent<HTMLAnchorElement>,
-	container: RefObject<HTMLAnchorElement | null>,
+	e: React.MouseEvent<HTMLDivElement>,
+	container: RefObject<HTMLDivElement | null>,
 	setPosition: Dispatch<SetStateAction<{ x: number; y: number }>>
 ) => {
 	if (container.current) {
