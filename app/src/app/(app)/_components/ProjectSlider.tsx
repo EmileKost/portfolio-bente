@@ -13,7 +13,7 @@ type ProjectSliderProps = {
 
 export const ProjectSlider = ({ projects }: ProjectSliderProps) => {
 	return (
-		<div className="w-full flex flex-col overflow-hidden md:flex-row gap-2">
+		<div className="w-full flex flex-col overflow-auto md:overflow-scroll md:flex-row gap-2 no-scrollbar">
 			{projects &&
 				projects.length > 0 &&
 				projects.map((project, idx) => (
