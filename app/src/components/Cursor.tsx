@@ -45,7 +45,7 @@ export const Cursor = ({
 						top: position.y,
 					}}
 					className={twMerge(
-						"absolute text-xs uppercase font-light p-3 aspect-square rounded-full flex justify-center items-center",
+						"absolute text-xs uppercase font-light p-3 aspect-square rounded-full flex justify-center items-center z-40",
 						className
 					)}>
 					{content}

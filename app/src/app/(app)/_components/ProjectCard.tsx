@@ -5,6 +5,8 @@ import { Cursor } from "@/components/Cursor";
 
 import Link from "next/link";
 
+import { handleMousePosition } from "@/utils/handleMousePosition";
+
 import { twMerge } from "tailwind-merge";
 
 import type { ProjectCard as ProjectCardType } from "@/types/project";
@@ -25,25 +27,12 @@ export const ProjectCard = ({
 
 	const containerRef = useRef<HTMLAnchorElement>(null);
 
-	const handleMousePosition = (e: MouseEvent) => {
-		if (containerRef.current) {
-			const rect = containerRef.current.getBoundingClientRect();
-
-			const x = e.clientX - rect.left;
-			const y = e.clientY - rect.top;
-
-			setPosition({ x, y });
-		}
-
-		return;
-	};
-
 	return (
 		<Link
 			ref={containerRef}
 			href={`/projects/${url}`}
 			onMouseMove={(e) => {
-				handleMousePosition(e);
+				handleMousePosition(e, containerRef, setPosition);
 				setIsHovering(true);
 			}}
 			onMouseLeave={() => setIsHovering(false)}
