@@ -3,12 +3,15 @@ import { useState, useRef } from "react";
 import { Media } from "@/components/Media";
 import { Cursor } from "@/components/Cursor";
 
+import Link from "next/link";
+
 import { twMerge } from "tailwind-merge";
 
 import type { ProjectCard as ProjectCardType } from "@/types/project";
 
 export const ProjectCard = ({
 	title,
+	url,
 	image,
 	video,
 	projectType,
@@ -20,7 +23,7 @@ export const ProjectCard = ({
 	const [isHovering, setIsHovering] = useState<boolean>(false);
 	const [isPlaying, setIsPlaying] = useState<boolean>(false);
 
-	const containerRef = useRef<HTMLDivElement>(null);
+	const containerRef = useRef<HTMLAnchorElement>(null);
 
 	const handleMousePosition = (e: MouseEvent) => {
 		if (containerRef.current) {
@@ -36,8 +39,9 @@ export const ProjectCard = ({
 	};
 
 	return (
-		<div
+		<Link
 			ref={containerRef}
+			href={`/projects/${url}`}
 			onMouseMove={(e) => {
 				handleMousePosition(e);
 				setIsHovering(true);
@@ -68,6 +72,6 @@ export const ProjectCard = ({
 				content="View"
 				position={position}
 			/>
-		</div>
+		</Link>
 	);
 };

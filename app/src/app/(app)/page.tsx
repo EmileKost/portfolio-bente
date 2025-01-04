@@ -6,26 +6,31 @@ const projects = [
 		title: "The unwritten laws",
 		projectType: "Ux/UI & visual design",
 		image: "/images/project-1.png",
+		url: "unwritten-laws",
 	},
 	{
 		title: "The unwritten laws",
 		projectType: "Ux/UI & visual design",
 		image: "/images/project-1.png",
+		url: "unwritten-laws",
 	},
 	{
 		title: "The unwritten laws",
 		projectType: "Ux/UI & visual design",
 		image: "/images/project-1.png",
+		url: "unwritten-laws",
 	},
 	{
 		title: "The unwritten laws",
 		projectType: "Ux/UI & visual design",
 		image: "/images/project-1.png",
+		url: "unwritten-laws",
 	},
 	{
 		title: "The unwritten laws",
 		projectType: "Ux/UI & visual design",
 		image: "/images/project-1.png",
+		url: "unwritten-laws",
 	},
 ];
 

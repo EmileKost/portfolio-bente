@@ -1,5 +1,6 @@
 export type Project = {
 	title: string;
+	url: string;
 	discipline: string;
 	image: string; // will change later
 	video?: string; // will change later

@@ -5,6 +5,7 @@ import { ProjectCard } from "./ProjectCard";
 type ProjectSliderProps = {
 	projects: Array<{
 		title: string;
+		url: string;
 		projectType: string;
 		image: string;
 		video?: string;
@@ -20,6 +21,7 @@ export const ProjectSlider = ({ projects }: ProjectSliderProps) => {
 					<ProjectCard
 						key={`${project.title}${idx}`}
 						title={project.title}
+						url={project.url}
 						projectType={project.projectType}
 						image={project.image}
 						index={idx}
