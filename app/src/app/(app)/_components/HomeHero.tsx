@@ -1,5 +1,4 @@
 import TitleTextBlock from "@/components/TitleTextBlock";
-import HomeTitle from "./HomeTitle";
 
 import { homeHeroContent } from "@/constants/homeHero";
 
@@ -13,7 +12,6 @@ export default function HomeHero() {
 					size="small"
 					className="uppercase"
 				/>
-				<HomeTitle title={"Roelofsen"} />
 			</div>
 		</div>
 	);
