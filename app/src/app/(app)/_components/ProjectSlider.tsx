@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 
 import { useInView } from "framer-motion";
 
@@ -21,38 +21,73 @@ type ProjectSliderProps = {
 
 export const ProjectSlider = ({ projects }: ProjectSliderProps) => {
 	gsap.registerPlugin(ScrollTrigger);
+
+	const [lockBody, setLockBody] = useState<boolean>(false);
+	const [scrollVelocity, setScrollVelocity] = useState<number>(0);
+
 	const projectSliderRef = useRef<HTMLDivElement | null>(null);
-	const inView = useInView(projectSliderRef, {
+
+	const sliderIsInView = useInView(projectSliderRef, {
 		amount: 1,
 	});
 
 	useEffect(() => {
-		console.log(inView);
-	}, [inView]);
+		const gsapInit = () => {
+			gsap.to(projectSliderRef.current, {
+				scrollTrigger: {
+					trigger: projectSliderRef.current,
+					// pin: true,
+					onUpdate: (self) => {
+						// setScrollVelocity(self.getVelocity());
+					},
+				},
+				// x: -scrollVelocity,
+			});
+		};
+
+		const handleWheelEvent = (e: WheelEvent) => {
+			console.log(e.deltaY);
+			setScrollVelocity(e.deltaY);
+		};
+
+		if (sliderIsInView) {
+			gsapInit();
+
+			document.addEventListener("wheel", handleWheelEvent);
+		}
+
+		return () => {
+			if (!sliderIsInView) {
+				document.removeEventListener("wheel", handleWheelEvent);
+			}
+		};
+	}, [scrollVelocity, sliderIsInView]);
 
 	return (
-		<div
-			ref={projectSliderRef}
-			className="w-full flex flex-col overflow-auto md:overflow-scroll md:flex-row gap-2 no-scrollbar my-8 md:my-24 cursor-none">
-			{projects &&
-				projects.length > 0 &&
-				projects.map((project, idx) => (
-					<ProjectCard
-						key={`${project.title}${idx}`}
-						title={project.title}
-						url={project.url}
-						projectType={project.projectType}
-						image={project.image}
-						index={idx}
-						length={projects.length}
-					/>
-				))}
+		<div className="w-full flex flex-col overflow-auto md:overflow-scroll md:flex-row gap-2 no-scrollbar my-8 md:my-24 cursor-none">
+			<div
+				ref={projectSliderRef}
+				className="w-full flex flex-col md:flex-row gap-2">
+				{projects &&
+					projects.length > 0 &&
+					projects.map((project, idx) => (
+						<ProjectCard
+							key={`${project.title}${idx}`}
+							title={project.title}
+							url={project.url}
+							projectType={project.projectType}
+							image={project.image}
+							index={idx}
+							length={projects.length}
+						/>
+					))}
+			</div>
 		</div>
 	);
 };
 
 // PSUEDO
-// Have a state for setProjectIndex
-// when container in view lock scroll
-// Measure scrolling with the wheelEvent and deltaY
-// on + x-amount of deltaY setProjectIndex + 1
+// - When scroll slider ref in view -> lock screen
+// - Measure scroll velocity and save in state.
+// - Animate X: with scrollVelocity being relative to width container
+// - Make it with
