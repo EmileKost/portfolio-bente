@@ -14,7 +14,7 @@ router.post("/:id", (req, res, next) => {
   const accessToken = req.accessToken;
 
   if (!accessToken) {
-    res.status(401).json({
+    return res.status(401).json({
       status: "not allowed",
       message: "You are not allowed to perform this action",
     });
