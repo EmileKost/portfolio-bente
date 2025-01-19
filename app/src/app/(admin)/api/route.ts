@@ -20,7 +20,7 @@ const handler = NextAuth({
 	},
 	pages: {
 		signIn: "/(admin)/login",
-		error: "/not-allowed",
+		error: "/(admin)/not-allowed",
 	},
 	callbacks: {
 		async signIn({ user, account, profile, email, credentials }) {
