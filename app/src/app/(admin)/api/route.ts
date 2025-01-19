@@ -23,8 +23,7 @@ const handler = NextAuth({
 		error: "/(admin)/not-allowed",
 	},
 	callbacks: {
-		async signIn({ user, account, profile, email, credentials }) {
-			console.log(user);
+		async signIn() {
 			return true;
 		},
 		async redirect({ url, baseUrl }) {
