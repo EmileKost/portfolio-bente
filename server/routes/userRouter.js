@@ -10,6 +10,22 @@ const {
 
 const router = express.Router();
 
+// Middleware
+router.get("/", (req, res, next) => {
+  console.log("EXECUTING MIDDLEWARE");
+
+  const authorized = true;
+
+  if (!authorized) {
+    return res.status(401).json({
+      status: "unauthorized",
+      messagge: "You are unauthorized to perform this action",
+    });
+  }
+
+  next();
+});
+
 router.param("id", (req, res, next) => {
   console.log(req.params.id);
   next();

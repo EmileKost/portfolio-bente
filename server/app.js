@@ -1,11 +1,14 @@
 const express = require("express");
 const morgan = require("morgan");
 
+const cors = require("cors");
+
 const userRouter = require("./routes/userRouter");
 const projectsRouter = require("./routes/projectsRouter");
 const aboutRouter = require("./routes/aboutRouter");
 
 const app = express();
+app.use(cors({ origin: "http://127.0.0.1:3000" }));
 
 // middleware
 if (process.env.ENV === "development") {

@@ -1,5 +1,22 @@
-const getAllUsers = (req, res) => {
-  res.status(200);
+const User = require("../schemas/users");
+
+const getAllUsers = async (req, res) => {
+  const users = await User.find();
+
+  if (!users || users.length === 0) {
+    return res.status(404).json({
+      status: "failed",
+      message: "No users found",
+      data: null,
+    });
+  }
+
+  res.status(200).json({
+    status: "success",
+    data: {
+      users,
+    },
+  });
 };
 
 const getUser = (req, res) => {
