@@ -2,6 +2,7 @@ const User = require("../schemas/users");
 
 const getAllUsers = async (req, res) => {
   const users = await User.find();
+  console.log(req);
 
   if (!users || users.length === 0) {
     return res.status(404).json({
@@ -13,6 +14,7 @@ const getAllUsers = async (req, res) => {
 
   res.status(200).json({
     status: "success",
+    ok: true,
     data: {
       users,
     },

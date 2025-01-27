@@ -1,11 +1,14 @@
 "use server";
 
+// TODO: FIX WEIRD NEXT err
 export async function getUsers() {
-	console.log("TRYING TO EXECUTE");
+	const BASE_URL = "http://localhost:4500";
+	const ENDPOINT = "/users";
 
 	try {
-		const response = await fetch("http://127.0.0.1:6000", {
+		const response = await fetch(new URL(ENDPOINT, BASE_URL).toString(), {
 			method: "GET",
+			cache: "no-store",
 			headers: {
 				"Content-Type": "application/json",
 			},
