@@ -91,8 +91,8 @@ export const MediaBlock = forwardRef(function MediaBlock(
 				{displayCursor && (
 					<Cursor
 						target={cursorRef as RefObject<HTMLDivElement>}
-						text={cursorText}
-						isVisible={isHovering}
+						content={cursorText as string}
+						isHovering={isHovering}
 					/>
 				)}
 			</div>

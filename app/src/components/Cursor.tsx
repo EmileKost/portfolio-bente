@@ -1,40 +1,58 @@
-import { forwardRef } from "react";
-import type { ForwardedRef, RefObject } from "react";
-
-import { motion } from "framer-motion";
-import classNames from "classnames";
-
 import { useMouseMovement } from "@/hooks/useMouseMovement";
+import { motion, AnimatePresence } from "framer-motion";
 
-type CursorProps = {
-	text?: string;
-	target: RefObject<HTMLDivElement>;
-	className?: string;
-	isVisible: boolean;
+import { twMerge } from "tailwind-merge";
+
+const animation = {
+	hidden: {
+		opacity: 0,
+		scale: 0.3,
+	},
+	visible: {
+		opacity: 1,
+		scale: 1,
+		// handle cool transition here
+	},
 };
 
-export const Cursor = forwardRef(function Cursor(
-	{ text, target, className, isVisible }: CursorProps,
-	ref: ForwardedRef<HTMLDivElement>
-) {
+type CursorProps = {
+	target;
+	isHovering: boolean;
+	content: string;
+	className?: string;
+	position: {
+		x: number;
+		y: number;
+	};
+};
+
+export const Cursor = ({
+	target,
+	isHovering,
+	content,
+	className,
+}: CursorProps) => {
 	const { x, y } = useMouseMovement(target);
 
-	console.log(x, y);
-
 	return (
-		<motion.div
-			ref={ref}
-			aria-hidden="true"
-			className={classNames(
-				"block w-8 h-8 p-1 rounded-full bg-white absolute left-0 top-0 text-base uppercase",
-				className
+		<AnimatePresence>
+			{isHovering && (
+				<motion.div
+					variants={animation}
+					initial={"hidden"}
+					animate="visible"
+					exit={"hidden"}
+					style={{
+						left: x,
+						top: y,
+					}}
+					className={twMerge(
+						"absolute text-xs uppercase font-light p-3 aspect-square rounded-full flex justify-center items-center z-40",
+						className
+					)}>
+					{content}
+				</motion.div>
 			)}
-			animate={{
-				x: x,
-				y: y,
-				opacity: isVisible ? 1 : 0,
-			}}>
-			{text && text}
-		</motion.div>
+		</AnimatePresence>
 	);
-});
+};
