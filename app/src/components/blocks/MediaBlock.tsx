@@ -1,3 +1,5 @@
+"use client";
+
 import { forwardRef, useRef, useState } from "react";
 import Image from "next/image";
 
@@ -25,7 +27,7 @@ export const MediaBlock = forwardRef(function MediaBlock(
 		video?: Media;
 		displayCursor?: boolean;
 		cursorText?: string;
-		autoPlay: boolean;
+		autoPlay?: boolean;
 		className?: string;
 	},
 	ref: ForwardedRef<HTMLDivElement>
@@ -45,7 +47,7 @@ export const MediaBlock = forwardRef(function MediaBlock(
 						<li
 							key={label}
 							className={classNames(
-								"text-base font-light max-w-[75%] md:max-w-[280px]",
+								"text-base font-light max-w-[75%] md:max-w-[280px] uppercase",
 								idx > 0 && "hidden md:inline-block"
 							)}>
 							{label}
@@ -59,18 +61,15 @@ export const MediaBlock = forwardRef(function MediaBlock(
 				onMouseLeave={() => setIsHovering(false)}
 				className="w-full relative overflow-hidden bg-black-primary aspect-[3/2]">
 				<div className="w-full h-full flex justify-center items-center absolute top-0 left-0">
-					{!isPlaying ||
-						(!video && (
-							<motion.div>
-								<Image
-									width={1447}
-									height={960}
-									src={thumbnail.url}
-									alt={thumbnail.alt}
-									className="w-full h-auto object-cover z-20"
-								/>
-							</motion.div>
-						))}
+					<motion.div className="w-full h-full">
+						<Image
+							width={1447}
+							height={960}
+							src={thumbnail.url}
+							alt={thumbnail.alt}
+							className="w-full h-auto object-cover z-20"
+						/>
+					</motion.div>
 
 					{video && (
 						<div className="w-full h-full">
@@ -89,7 +88,13 @@ export const MediaBlock = forwardRef(function MediaBlock(
 				</div>
 
 				{/* TODO: Fix ugly type here */}
-				<Cursor target={cursorRef as RefObject<HTMLDivElement>} />
+				{displayCursor && (
+					<Cursor
+						target={cursorRef as RefObject<HTMLDivElement>}
+						text={cursorText}
+						isVisible={isHovering}
+					/>
+				)}
 			</div>
 		</div>
 	);
