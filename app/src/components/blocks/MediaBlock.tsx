@@ -3,14 +3,12 @@
 import { forwardRef, useRef, useState } from "react";
 import Image from "next/image";
 
-import type { ForwardedRef, RefObject } from "react";
+import type { ForwardedRef } from "react";
 
 import type { Media } from "@/types/types.common";
 
 import { motion } from "framer-motion";
 import classNames from "classnames";
-
-import { Cursor } from "../Cursor";
 
 export const MediaBlock = forwardRef(function MediaBlock(
 	{
@@ -32,10 +30,7 @@ export const MediaBlock = forwardRef(function MediaBlock(
 	},
 	ref: ForwardedRef<HTMLDivElement>
 ) {
-	const [isPlaying] = useState<boolean>(autoPlay);
-	const [isHovering, setIsHovering] = useState<boolean>(false);
-
-	const cursorRef = useRef<HTMLDivElement | null>(null);
+	const mediaRef = useRef<HTMLDivElement>(null);
 
 	return (
 		<div
@@ -56,10 +51,8 @@ export const MediaBlock = forwardRef(function MediaBlock(
 				</ul>
 			)}
 			<div
-				ref={cursorRef}
-				onMouseEnter={() => setIsHovering(true)}
-				onMouseLeave={() => setIsHovering(false)}
-				className="w-full relative overflow-hidden bg-black-primary aspect-[3/2]">
+				ref={mediaRef}
+				className="w-full relative overflow-hidden bg-black-primary aspect-[16/9]">
 				<div className="w-full h-full flex justify-center items-center absolute top-0 left-0">
 					<motion.div className="w-full h-full">
 						<Image
@@ -86,15 +79,6 @@ export const MediaBlock = forwardRef(function MediaBlock(
 						</div>
 					)}
 				</div>
-
-				{/* TODO: Fix ugly type here */}
-				{displayCursor && (
-					<Cursor
-						target={cursorRef as RefObject<HTMLDivElement>}
-						content={cursorText as string}
-						isHovering={isHovering}
-					/>
-				)}
 			</div>
 		</div>
 	);
