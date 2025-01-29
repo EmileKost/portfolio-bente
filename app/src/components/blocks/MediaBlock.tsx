@@ -1,6 +1,6 @@
 "use client";
 
-import { forwardRef, useRef, useState } from "react";
+import { forwardRef, useRef } from "react";
 import Image from "next/image";
 
 import type { ForwardedRef } from "react";
@@ -10,27 +10,35 @@ import type { Media } from "@/types/types.common";
 import { motion } from "framer-motion";
 import classNames from "classnames";
 
+import { useMouseMovement } from "@/hooks/useMouseMovement";
+
+import { Cursor } from "../Cursor";
+
+type MediaBlockProps = {
+	labels?: Array<string>;
+	thumbnail: Media;
+	video?: Media;
+	displayCursor?: boolean;
+	cursorText?: string;
+	autoPlay?: boolean;
+	className?: string;
+};
+
 export const MediaBlock = forwardRef(function MediaBlock(
 	{
 		labels,
-		thumbnail, // will serve as image if no video provided
+		thumbnail,
 		video,
 		displayCursor = true,
 		cursorText,
 		autoPlay = false,
 		className,
-	}: {
-		labels?: Array<string>;
-		thumbnail: Media;
-		video?: Media;
-		displayCursor?: boolean;
-		cursorText?: string;
-		autoPlay?: boolean;
-		className?: string;
-	},
+	}: MediaBlockProps,
 	ref: ForwardedRef<HTMLDivElement>
 ) {
 	const mediaRef = useRef<HTMLDivElement>(null);
+
+	const { position, isHovering } = useMouseMovement(mediaRef);
 
 	return (
 		<div
@@ -52,7 +60,7 @@ export const MediaBlock = forwardRef(function MediaBlock(
 			)}
 			<div
 				ref={mediaRef}
-				className="w-full relative overflow-hidden bg-black-primary aspect-[16/9]">
+				className="w-full relative overflow-hidden bg-black-primary aspect-[1/2] md:aspect-[16/9] cursor-none">
 				<div className="w-full h-full flex justify-center items-center absolute top-0 left-0">
 					<motion.div className="w-full h-full">
 						<Image
@@ -60,7 +68,7 @@ export const MediaBlock = forwardRef(function MediaBlock(
 							height={960}
 							src={thumbnail.url}
 							alt={thumbnail.alt}
-							className="w-full h-auto object-cover z-20"
+							className="w-full h-full object-cover z-20"
 						/>
 					</motion.div>
 
@@ -79,6 +87,15 @@ export const MediaBlock = forwardRef(function MediaBlock(
 						</div>
 					)}
 				</div>
+
+				{displayCursor && (
+					<Cursor
+						text={cursorText}
+						isVisible={isHovering}
+						position={position}
+						className="p-2 rounded-full bg-transparent bg-red-600 mix-blend-difference text-white"
+					/>
+				)}
 			</div>
 		</div>
 	);

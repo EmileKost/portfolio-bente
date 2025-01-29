@@ -1,30 +1,37 @@
 import { useState, useEffect, RefObject } from "react";
+import { useReducedMotion } from "framer-motion";
 
-export const useMouseMovement = (target: RefObject<HTMLDivElement>) => {
-	const [mousePosition, setMousePosition] = useState<{ x: number; y: number }>({
-		x: 0,
-		y: 0,
-	});
+export type MousePosition = { x: number; y: number };
+
+export const useMouseMovement = (target: RefObject<HTMLDivElement | null>) => {
+	const [position, setPosition] = useState<MousePosition>({ x: 0, y: 0 });
+	const [isHovering, setIsHovering] = useState<boolean>(false);
+
+	const prefersReducedMotion = useReducedMotion();
 
 	useEffect(() => {
-		const targetEl = target.current;
+		if (prefersReducedMotion) {
+			return;
+		}
 
-		const handleMousePosition = (e: MouseEvent) => {
-			const { clientX, clientY } = e;
+		if (target.current) {
+			const targetEl = target.current;
+			const rect = targetEl.getBoundingClientRect();
 
-			setMousePosition({ x: clientX, y: clientY });
-		};
+			function handleMouseMovement(e: MouseEvent) {
+				setPosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+				setIsHovering(true);
+			}
 
-		targetEl.addEventListener("mouseenter", (e) => {
-			handleMousePosition(e);
-		});
-		targetEl.addEventListener("mousemove", handleMousePosition);
+			targetEl.addEventListener("mousemove", handleMouseMovement);
+			targetEl.addEventListener("mouseleave", () => setIsHovering(false));
 
-		return () => {
-			targetEl.removeEventListener("mouseenter", handleMousePosition);
-			targetEl.removeEventListener("mousemove", handleMousePosition);
-		};
+			return () => {
+				targetEl.removeEventListener("mousemove", handleMouseMovement);
+				targetEl.removeEventListener("mouseleave", () => setIsHovering(false));
+			};
+		}
 	});
 
-	return { x: mousePosition.x, y: mousePosition.y };
+	return { position, isHovering };
 };

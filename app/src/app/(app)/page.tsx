@@ -6,6 +6,7 @@ export default function HomePage() {
 	return (
 		<>
 			<HomeHero />
+			{/* Remove after dev */}
 			<MediaBlock
 				labels={[
 					"Animated lyric video -- Ocean Drive",
