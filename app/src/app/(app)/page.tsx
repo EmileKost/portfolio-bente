@@ -1,12 +1,11 @@
 import HomeHero from "./_components/HomeHero";
 
-import { MediaBlock } from "@/components/blocks/MediaBlock";
+import { MediaBlock } from "@/components/blocks/MediaSingleBlock";
 
 export default function HomePage() {
 	return (
 		<>
 			<HomeHero />
-			{/* Remove after dev */}
 			<MediaBlock
 				labels={[
 					"Animated lyric video -- Ocean Drive",
@@ -14,7 +13,7 @@ export default function HomePage() {
 					"JUN 2022",
 					"Motion Design",
 				]}
-				thumbnail={{ url: "/images/image-1.png", alt: "test" }}
+				image={{ url: "/images/image-1.png", alt: "test" }}
 				displayCursor
 				cursorText="Watch me"
 			/>
