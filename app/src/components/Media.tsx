@@ -11,10 +11,7 @@ import { Media as MediaType } from "@/types/types.common";
 
 type MediaProps = {
 	className?: string;
-	image: {
-		url: string;
-		alt: string;
-	};
+	image: MediaType;
 	video?: MediaType | undefined;
 	isPlaying: boolean;
 	cursor?: ReactNode | undefined;
@@ -36,7 +33,7 @@ export const Media = forwardRef(function Media(
 					<Image
 						width={1447}
 						height={960}
-						src={image.url}
+						src={image.src}
 						alt={image.alt}
 						className="w-full h-full object-cover z-20"
 					/>

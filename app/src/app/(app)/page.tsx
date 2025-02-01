@@ -13,7 +13,7 @@ export default function HomePage() {
 					"JUN 2022",
 					"Motion Design",
 				]}
-				image={{ url: "/images/image-1.png", alt: "test" }}
+				image={{ src: "/images/image-1.png", alt: "test" }}
 				displayCursor
 				cursorText="Watch me"
 			/>
