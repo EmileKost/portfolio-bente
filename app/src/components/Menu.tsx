@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import { Button } from "./Button";
+import { Button } from "./buttons/Button";
 
 export default function Menu() {
 	const [open, setOpen] = useState<boolean>(false);

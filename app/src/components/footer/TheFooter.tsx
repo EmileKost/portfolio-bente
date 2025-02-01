@@ -1,7 +1,7 @@
-import { Button } from "../Button";
+import { Button } from "../buttons/Button";
 
 import { footerContent } from "@/constants/footer";
-import { FooterButton } from "../FooterButton";
+import { FooterButton } from "../buttons/FooterButton";
 
 export const TheFooter = () => {
 	return (

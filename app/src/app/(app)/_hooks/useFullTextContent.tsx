@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useBreakpointValues } from "@/hooks/useBreakpointValues";
 import { removeVowels } from "@/utils/removeVowels";
 
-const SCREEN_MD = 768;
+export const SCREEN_MD = 768;
 
 export const useFullTextContent = (
 	text: string,
