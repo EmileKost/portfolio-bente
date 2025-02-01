@@ -7,12 +7,11 @@ import type { ForwardedRef } from "react";
 import type { Media as MediaType } from "@/types/types.common";
 
 import { Media } from "../Media";
+import { Cursor } from "../Cursor";
 
 import classNames from "classnames";
 
 import { useMouseMovement } from "@/hooks/useMouseMovement";
-
-import { Cursor } from "../Cursor";
 
 type MediaBlockProps = {
 	labels?: Array<string>;
