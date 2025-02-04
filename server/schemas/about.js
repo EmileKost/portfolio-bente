@@ -12,7 +12,7 @@ const aboutSchema = new mongoose.Schema({
   skills: [Skills],
   experience: {
     type: [Experience],
-    maxLength: 12,
+    maxLength: 20,
   },
 });
 
