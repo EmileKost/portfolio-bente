@@ -4,15 +4,13 @@ import { Label } from "../Label";
 
 import classNames from "classnames";
 
+import type { ExtendContentStyles } from "@/types/types.common";
+
 type HeroContextBlockProps = {
 	title: string;
 	label?: string;
 	text?: string;
-	className?: {
-		title?: string;
-		text?: string;
-		container?: string;
-	};
+	className?: ExtendContentStyles;
 };
 
 export const LargeHeroContentBlock = forwardRef(function LargeHeroContentBlock(
