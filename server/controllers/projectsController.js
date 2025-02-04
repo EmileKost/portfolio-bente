@@ -28,27 +28,20 @@ const getAllProjects = async (req, res) => {
 const getProject = async (req, res) => {
   const { id } = req.params;
 
-  if (id.match(/^[0-9a-fA-F]{24}$/)) {
-    const project = await Projects.findById(id);
+  const project = await Projects.findById(id);
 
-    if (!project) {
-      return res.json({
-        status: 404,
-        message: "Could not find project",
-      });
-    }
-
+  if (!project) {
     return res.json({
-      status: 200,
-      data: {
-        project,
-      },
+      status: 404,
+      message: "Could not find project",
     });
   }
 
   return res.json({
-    status: 400,
-    message: "Not a valid objectId",
+    status: 200,
+    data: {
+      project,
+    },
   });
 };
 
