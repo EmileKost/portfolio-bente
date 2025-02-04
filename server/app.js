@@ -1,9 +1,8 @@
 const express = require("express");
 const morgan = require("morgan");
 
-const userRouter = require("./routes/userRouter");
-const projectsRouter = require("./routes/projectsRouter");
-const aboutRouter = require("./routes/aboutRouter");
+// routes
+const projectsRouter = require("./routes/projectsRoute");
 
 const app = express();
 
@@ -14,8 +13,8 @@ if (process.env.ENV === "development") {
 
 app.use(express.json());
 
-app.use("/users", userRouter);
-app.use("/projects", projectsRouter);
-app.use("/about", aboutRouter);
+console.log(process.env.API_BASE_URL);
+
+app.use(`${process.env.API_BASE_URL}/projects`, projectsRouter);
 
 module.exports = app;
