@@ -13,7 +13,7 @@ type MediaProps = {
 	className?: string;
 	image: MediaType;
 	video?: MediaType | undefined;
-	isPlaying: boolean;
+	isPlaying?: boolean;
 	cursor?: ReactNode | undefined;
 };
 

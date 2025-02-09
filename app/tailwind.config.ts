@@ -19,6 +19,9 @@ export default {
 					primary: "#FF673D",
 				},
 			},
+			fontSize: {
+				xxs: "10px",
+			},
 		},
 	},
 	plugins: [],

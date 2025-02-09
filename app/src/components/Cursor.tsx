@@ -7,7 +7,10 @@ import classNames from "classnames";
 type CursorProps = {
 	isVisible: boolean;
 	position: MousePosition;
-	className?: string;
+	className?: {
+		container: string;
+		text: string;
+	};
 	text?: string;
 };
 
@@ -32,8 +35,8 @@ export const Cursor = ({
 		{isVisible && (
 			<motion.div
 				className={classNames(
-					"absolute top-0 left-0 aspect-square rounded-full flex justify-center items-center z-30",
-					className
+					"absolute top-0 left-0 aspect-square rounded-full p-2 flex justify-center items-center z-30",
+					className?.container
 				)}
 				variants={variants}
 				initial="initial"
@@ -43,7 +46,11 @@ export const Cursor = ({
 					y: `calc(${position.y}px - 50%)`,
 					x: `calc(${position.x}px - 50%)`,
 				}}>
-				{text && <span>{text}</span>}
+				{text && (
+					<span className={classNames("text-white-primary", className?.text)}>
+						{text}
+					</span>
+				)}
 			</motion.div>
 		)}
 	</AnimatePresence>

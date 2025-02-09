@@ -1,22 +1,53 @@
 import HomeHero from "./_components/HomeHero";
+import { HomeSlider } from "@/components/HomeSlider";
 
-import { MediaBlock } from "@/components/blocks/MediaSingleBlock";
+const projects = [
+	{
+		slug: "the-unwritten-laws",
+		title: "The Unwritten Laws",
+		profession: "UX/UI & Visual Design",
+		image: {
+			src: "/projects/project-1.png",
+			alt: "Mock image",
+		},
+		cursor: "See project",
+	},
+	{
+		slug: "the-unwritten-laws",
+		title: "Consumer Society",
+		profession: "UX/UI & Visual Design",
+		image: {
+			src: "/projects/project-2.png",
+			alt: "Mock image",
+		},
+		cursor: "consume",
+	},
+	{
+		slug: "the-unwritten-laws",
+		title: "Consumers",
+		profession: "UX/UI & Visual Design",
+		image: {
+			src: "/projects/project-1.png",
+			alt: "Mock image",
+		},
+		cursor: "Discover",
+	},
+	{
+		slug: "the-unwritten-laws",
+		title: "The Unwritten Lawssss",
+		profession: "UX/UI & Visual Design",
+		image: {
+			src: "/projects/project-2.png",
+			alt: "Mock image",
+		},
+	},
+];
 
 export default function HomePage() {
 	return (
 		<>
 			<HomeHero />
-			<MediaBlock
-				labels={[
-					"Animated lyric video -- Ocean Drive",
-					"Univeristy of Europe for applied sciences, Berlin",
-					"JUN 2022",
-					"Motion Design",
-				]}
-				image={{ src: "/images/image-1.png", alt: "test" }}
-				displayCursor
-				cursorText="Watch me"
-			/>
+			{projects.length > 0 && <HomeSlider projects={projects} />}
 		</>
 	);
 }
