@@ -70,7 +70,9 @@ export const MediaBlock = forwardRef(function MediaBlock(
 							isVisible={isHovering}
 							position={position}
 							text={cursorText}
-							className="p-2 rounded-full bg-red-600 mix-blend-difference text-white"
+							className={{
+								container: "p-2 rounded-full bg-red-600 mix-blend-difference",
+							}}
 						/>
 					) : undefined
 				}

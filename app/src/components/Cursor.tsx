@@ -8,8 +8,8 @@ type CursorProps = {
 	isVisible: boolean;
 	position: MousePosition;
 	className?: {
-		container: string;
-		text: string;
+		container?: string;
+		text?: string;
 	};
 	text?: string;
 };

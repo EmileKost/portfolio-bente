@@ -50,7 +50,7 @@ export const HomeSlider = ({ projects }: HomeSliderProps) => {
 export const SliderRails = ({ children }: PropsWithChildren) => {
 	return (
 		<div className="w-full h-full py-2 md:py-9 flex justify-center items-center flex-row overflow-y-hidden overflow-x-scroll flex-shrink-0">
-			<div className="w-full h-fit flex flex-col gap-1 md:flex-row md:gap-2">
+			<div className="w-full h-full md:max-h-[90vh] flex flex-col gap-1 md:flex-row md:gap-2">
 				{children}
 			</div>
 		</div>
@@ -74,7 +74,7 @@ const SliderCard = ({
 		<Link
 			ref={cursorRef}
 			href={`/projects/${project.slug}`}
-			className="w-full md:max-w-[720px] h-fit relative aspect-[3/4] flex justify-center items-center shrink-0 overflow-hidden bg-black-primary">
+			className="relative w-full md:w-auto h-auto md:max-h-[80vh] aspect-[3/4] flex justify-center items-center shrink-0 overflow-hidden bg-black-primary">
 			<Media
 				image={{
 					src: project.image.src,
