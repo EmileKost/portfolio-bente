@@ -21,7 +21,7 @@ type SliderCardProps = {
 };
 
 type HomeSliderProps = {
-	projects: Array<SliderCardProps>; // fix type later
+	projects: Array<SliderCardProps>;
 };
 
 export const HomeSlider = ({ projects }: HomeSliderProps) => {
