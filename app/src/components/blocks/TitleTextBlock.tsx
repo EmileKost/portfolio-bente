@@ -1,11 +1,11 @@
-import { twMerge } from "tailwind-merge";
+import classNames from "classnames";
 
 export default function TitleTextBlock({
 	title,
 	text,
 	label,
 	size,
-	className, // for the text block
+	className,
 }: {
 	title: string;
 	text?: string;
@@ -15,8 +15,7 @@ export default function TitleTextBlock({
 }) {
 	return (
 		<div
-			className={twMerge(
-				// TODO: Find better library that lets us apply dynamic style other then ternary
+			className={classNames(
 				"flex flex-col md:flex-row gap-4 w-full",
 				size === "small" ? "md:max-w-[700px]" : "",
 				size === "medium" ? "md:max-w-[80%]" : "",
@@ -26,7 +25,9 @@ export default function TitleTextBlock({
 				{label && <span className="uppercase text-base">{label}</span>}
 				<h2 className="uppercase text-base md:text-2xl w-full">{title}</h2>
 			</div>
-			{text && <p className={twMerge("text-base w-full", className)}>{text}</p>}
+			{text && (
+				<p className={classNames("text-base w-full", className)}>{text}</p>
+			)}
 		</div>
 	);
 }

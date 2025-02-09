@@ -1,4 +1,4 @@
-import TitleTextBlock from "@/components/TitleTextBlock";
+import TitleTextBlock from "@/components/blocks/TitleTextBlock";
 import { Logo } from "./Logo";
 
 import { homeHeroContent } from "@/constants/homeHero";
