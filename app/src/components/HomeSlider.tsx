@@ -1,15 +1,20 @@
 "use client";
 
-import { useRef } from "react";
+import { forwardRef, useRef, useEffect } from "react";
+import type { Ref } from "react";
 
 import type { Media as MediaType } from "@/types/types.common";
 import Link from "next/link";
 import { PropsWithChildren } from "react";
 
-import { useInView } from "framer-motion";
 import { Cursor } from "./Cursor";
 import { Media } from "./Media";
 import { useMouseMovement } from "@/hooks/useMouseMovement";
+
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 type SliderCardProps = {
 	slug: string;
@@ -25,37 +30,79 @@ type HomeSliderProps = {
 };
 
 export const HomeSlider = ({ projects }: HomeSliderProps) => {
-	const sliderContainerRef = useRef<HTMLDivElement | null>(null);
-	const sliderInView = useInView(sliderContainerRef, { once: true, amount: 1 });
+	const sliderContainerRef = useRef<HTMLDivElement>(null);
+	const sliderRailsRef = useRef<HTMLDivElement>(null);
 
+	useEffect(() => {
+		function amountToScroll(): number {
+			if (sliderRailsRef.current) {
+				return -sliderRailsRef.current.offsetWidth - window.innerWidth;
+			}
+
+			return 0;
+		}
+
+		if (sliderContainerRef.current && sliderRailsRef.current) {
+			const sliderAnimation = gsap.to(sliderRailsRef.current, {
+				x: amountToScroll,
+			});
+
+			// TODO:
+			// - Fix smoother end
+			// - Why not ending on width end?
+
+			ScrollTrigger.create({
+				trigger: sliderContainerRef.current,
+				pin: true,
+				start: "top 0%",
+				end: "+=" + amountToScroll() * -1,
+				scrub: 1.75,
+				markers: true,
+				pinSpacing: true,
+				invalidateOnRefresh: true,
+				animation: sliderAnimation,
+			});
+		}
+
+		return;
+	});
+
+	return (
+		<>
+			<div
+				ref={sliderContainerRef}
+				id="test"
+				className="w-full md:h-screen overflow-hidden flex flex-col justify-center items-center">
+				<div className="w-full h-full py-2 md:py-9 flex justify-center items-center flex-row overflow-hidden flex-shrink-0">
+					<SliderRails ref={sliderRailsRef}>
+						{projects.length > 0 &&
+							projects.map((project, idx) => (
+								<SliderCard
+									key={project.title}
+									project={project}
+									index={idx}
+									length={projects.length}
+								/>
+							))}
+					</SliderRails>
+				</div>
+			</div>
+		</>
+	);
+};
+
+export const SliderRails = forwardRef(function SliderRails(
+	{ children }: PropsWithChildren,
+	ref: Ref<HTMLDivElement>
+) {
 	return (
 		<div
-			ref={sliderContainerRef}
-			className="w-full md:h-screen overflow-hidden flex justify-center items-center">
-			<SliderRails>
-				{projects.length > 0 &&
-					projects.map((project, idx) => (
-						<SliderCard
-							key={project.title}
-							project={project}
-							index={idx}
-							length={projects.length}
-						/>
-					))}
-			</SliderRails>
+			ref={ref}
+			className="w-auto h-full flex flex-col gap-1 md:flex-row md:gap-2 bg-black-primary">
+			<>{children}</>
 		</div>
 	);
-};
-
-export const SliderRails = ({ children }: PropsWithChildren) => {
-	return (
-		<div className="w-full h-full py-2 md:py-9 flex justify-center items-center flex-row overflow-y-hidden overflow-x-scroll flex-shrink-0">
-			<div className="w-full h-full md:max-h-[90vh] flex flex-col gap-1 md:flex-row md:gap-2">
-				{children}
-			</div>
-		</div>
-	);
-};
+});
 
 const SliderCard = ({
 	project,
@@ -74,7 +121,7 @@ const SliderCard = ({
 		<Link
 			ref={cursorRef}
 			href={`/projects/${project.slug}`}
-			className="relative w-full md:w-auto h-auto md:max-h-[80vh] aspect-[3/4] flex justify-center items-center shrink-0 overflow-hidden bg-black-primary">
+			className="slider-item relative w-full md:w-auto h-auto md:max-h-[80vh] aspect-[3/4] flex justify-center items-center shrink-0 overflow-hidden bg-black-primary">
 			<Media
 				image={{
 					src: project.image.src,

@@ -41,6 +41,35 @@ const projects = [
 			alt: "Mock image",
 		},
 	},
+	{
+		slug: "the-unwritten-laws",
+		title: "Consumersss",
+		profession: "UX/UI & Visual Design",
+		image: {
+			src: "/projects/project-1.png",
+			alt: "Mock image",
+		},
+		cursor: "Discover",
+	},
+	{
+		slug: "the-unwritten-laws",
+		title: "The Unwritten Lawssddss",
+		profession: "UX/UI & Visual Design",
+		image: {
+			src: "/projects/project-2.png",
+			alt: "Mock image",
+		},
+	},
+	{
+		slug: "the-unwritten-laws",
+		title: "Consumerssasdfs",
+		profession: "UX/UI & Visual Design",
+		image: {
+			src: "/projects/project-1.png",
+			alt: "Mock image",
+		},
+		cursor: "Discover",
+	},
 ];
 
 export default function HomePage() {
