@@ -22,32 +22,7 @@ type SliderCardProps = {
 	cursor?: string;
 };
 
-type HomeSliderProps = {
-	projects: Array<SliderCardProps>;
-};
-
-export const HomeSlider = ({ projects }: HomeSliderProps) => {
-	return (
-		<>
-			<div className="relative w-full h-screen flex justify-center items-center overflow-hidden">
-				{projects.length > 0 && (
-					<div className="w-full flex gap-1">
-						{projects.map((project, idx) => (
-							<SliderCard
-								key={project.title}
-								project={project}
-								length={projects.length}
-								index={idx}
-							/>
-						))}
-					</div>
-				)}
-			</div>
-		</>
-	);
-};
-
-const SliderCard = ({
+export const SliderCard = ({
 	project,
 	index,
 	length,

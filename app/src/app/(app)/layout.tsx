@@ -7,8 +7,8 @@ export default function AppLayout({ children }: { children: ReactNode }) {
 	return (
 		<>
 			<TheHeader />
-			<main className="px-3 md:px-8">{children}</main>
-			<TheFooter />
+			<main>{children}</main>
+			{/* <TheFooter /> */}
 		</>
 	);
 }
