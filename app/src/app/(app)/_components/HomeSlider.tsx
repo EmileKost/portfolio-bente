@@ -14,21 +14,27 @@ export const HomeSlider = ({ projects }: { projects: any }) => {
 	const animatorRef = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
-		const tl = gsap.timeline({});
+		// const tl = gsap.timeline({});
+		const animator = animatorRef.current;
 
-		ScrollTrigger.create({
-			trigger: triggerRef.current,
-			start: "top top",
-			markers: true,
-			pin: true,
-			// scrub: 1,
-			onUpdate: ({ progress }) => {
-				console.log(progress);
-				tl.to(animatorRef.current, {
-					xPercent: -100, // adjust later
-				});
-			},
-		});
+		if (animator) {
+			ScrollTrigger.create({
+				trigger: triggerRef.current,
+				start: "top top",
+				markers: true,
+				pin: true,
+				end: () => "+=" + (animator.scrollWidth + animator.clientWidth),
+				scrub: 2,
+				onUpdate: ({ progress }) => {
+					console.log(progress);
+					gsap.to(animatorRef.current, {
+						x: -animator.scrollWidth * progress, // adjust later
+						ease: "power2.out",
+						duration: 0.75,
+					});
+				},
+			});
+		}
 
 		return () => ScrollTrigger.killAll();
 	});

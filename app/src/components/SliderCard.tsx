@@ -40,7 +40,7 @@ export const SliderCard = ({
 		<Link
 			ref={cursorRef}
 			href={`/projects/${project.slug}`}
-			className="w-full aspect-[3/4] md:max-w-[550px] h-auto relative shrink-0 flex items-end overflow-hidden">
+			className="w-full aspect-[3/4] md:max-w-[750px] h-auto relative shrink-0 flex items-end overflow-hidden">
 			<div className="w-full flex justify-between z-30 px-2 pb-3 bg-gradient-to-t from-black-primary/80 to-transparent">
 				<h4 className="text-xxs md:text-base text-white-primary">{`${
 					index + 1
