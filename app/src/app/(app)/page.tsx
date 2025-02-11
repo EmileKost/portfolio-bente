@@ -1,4 +1,6 @@
-import { ScrollRails } from "./_components/ScrollRails";
+import { ScrollSnapper } from "@/components/ScrollSnapper";
+import HomeHero from "./_components/HomeHero";
+import { HomeSlider } from "./_components/HomeSlider";
 
 const projects = [
 	{
@@ -72,5 +74,10 @@ const projects = [
 ];
 
 export default function HomePage() {
-	return <ScrollRails projects={projects} />;
+	return (
+		<>
+			<HomeHero />
+			<HomeSlider projects={projects} />
+		</>
+	);
 }
