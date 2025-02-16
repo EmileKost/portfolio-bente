@@ -1,6 +1,6 @@
-import { ScrollSnapper } from "@/components/ScrollSnapper";
+"use client";
+
 import HomeHero from "./_components/HomeHero";
-import { HomeSlider } from "./_components/HomeSlider";
 
 const projects = [
 	{
@@ -77,7 +77,6 @@ export default function HomePage() {
 	return (
 		<>
 			<HomeHero />
-			<HomeSlider projects={projects} />
 		</>
 	);
 }
