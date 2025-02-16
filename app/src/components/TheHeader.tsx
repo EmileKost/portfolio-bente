@@ -3,7 +3,7 @@ import Menu from "./Menu";
 
 export const TheHeader = () => {
 	return (
-		<header className="w-full fixed top-0 left-0 flex justify-between px-3 md:px-8 pt-6">
+		<header className="w-full fixed top-0 left-0 flex justify-between px-3 md:px-8 pt-6 z-30">
 			<Link
 				href="/"
 				className="text-base md:text-lg uppercase">
