@@ -68,12 +68,11 @@ export const MediaBlock = forwardRef(function MediaBlock(
 					displayCursor ? (
 						<Cursor
 							isVisible={isHovering}
-							position={position}
-							text={cursorText}
-							className={{
-								container: "p-2 rounded-full bg-red-600 mix-blend-difference",
-							}}
-						/>
+							position={position}>
+							<span className="p-2 rounded-full bg-red-600 mix-blend-difference">
+								{cursorText}
+							</span>
+						</Cursor>
 					) : undefined
 				}
 			/>

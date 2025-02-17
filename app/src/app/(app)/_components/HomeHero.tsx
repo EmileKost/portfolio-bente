@@ -1,9 +1,7 @@
 import TitleTextBlock from "@/components/blocks/TitleTextBlock";
 import { Logo } from "./Logo";
 
-import { homeHeroContent } from "@/constants/homeHero";
-
-export default function HomeHero() {
+export function HomeHero() {
 	return (
 		<div className="min-h-screen w-full flex items-end justify-end snap-center">
 			<div className="flex items-end w-full flex-col gap-0">

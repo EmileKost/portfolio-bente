@@ -3,7 +3,7 @@ import { useReducedMotion } from "framer-motion";
 
 export type MousePosition = { x: number; y: number };
 
-export const useMouseMovement = (target: RefObject<HTMLDivElement | null>) => {
+export const useMouseMovement = (target: RefObject<HTMLElement | null>) => {
 	const [position, setPosition] = useState<MousePosition>({ x: 0, y: 0 });
 	const [isHovering, setIsHovering] = useState<boolean>(false);
 
