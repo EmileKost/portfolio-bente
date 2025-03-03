@@ -1,4 +1,4 @@
-import type { PropsWithChildren } from "react";
+import { PropsWithChildren } from "react";
 
 export async function DashboardRootLayout({ children }: PropsWithChildren) {
 	return (

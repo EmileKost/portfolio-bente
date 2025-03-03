@@ -33,7 +33,10 @@ export async function updateSession(request: NextRequest) {
 		data: { user },
 	} = await supabase.auth.getUser();
 
-	// Handle redirectingggg
+	// if (!user && !request.nextUrl.pathname.startsWith("/dashboard")) {
+	// 	console.log("Not allowed");
+	// }
 
+	// Handle redirectingggg
 	return supabaseResponse;
 }
