@@ -1,6 +1,8 @@
 import { PropsWithChildren } from "react";
 
-export async function DashboardRootLayout({ children }: PropsWithChildren) {
+export default async function DashboardRootLayout({
+	children,
+}: PropsWithChildren) {
 	return (
 		<>
 			<main>{children}</main>
