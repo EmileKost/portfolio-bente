@@ -33,7 +33,7 @@ export async function updateSession(request: NextRequest) {
 		data: { user },
 	} = await supabase.auth.getUser();
 
-	console.log(request);
+	// Handle redirectingggg
 
 	return supabaseResponse;
 }
