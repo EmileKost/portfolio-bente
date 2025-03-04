@@ -1,5 +1,5 @@
 import "./globals.css";
-
+import { TheHeader } from "@/components/TheHeader";
 export default function RootLayout({
 	children,
 }: Readonly<{
@@ -7,7 +7,10 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body>{children}</body>
+			<body className="w-full min-h-screen bg-beige">
+				<TheHeader />
+				{children}
+			</body>
 		</html>
 	);
 }
