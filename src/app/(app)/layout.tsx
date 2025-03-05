@@ -1,6 +1,6 @@
-import "../globals.css";
 import { TheHeader } from "@/components/TheHeader";
-export default function RootLayout({
+
+export default function PortfolioLayout({
 	children,
 }: Readonly<{
 	children: React.ReactNode;
