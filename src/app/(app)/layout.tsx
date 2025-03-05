@@ -1,4 +1,4 @@
-import "./globals.css";
+import "../globals.css";
 import { TheHeader } from "@/components/TheHeader";
 export default function RootLayout({
 	children,
